@@ -1,0 +1,2 @@
+# SpartanSolr
+Software Engineering project
