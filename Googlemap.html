@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Accessing arguments in UI events</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 600px;
+		width: 600px;
+		position:relative;
+		left: 80px;
+		top: 80px;
+		bottom: 80px;
+      }
+	  
+	  .break {
+		clear:both;
+	  }
+	  
+	#input {
+		position:relative;
+		top: 120px;
+		left: 80px;
+	}
+	  
+	  #delete {
+		position : relative;
+		top: 180px;
+		left: 600px;
+	  }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+	
+	<div class="break"></div>
+	
+	if(pin.clicked)
+	
+					<div id="input">
+						<input type="text" placeholder="Enter Name"/>
+					</div>
+					
+					<div class="break"></div>
+					
+					<div id="delete">
+						<button> delete</button>
+					</div>
+	
+    <script>
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: {lat: 34.9467, lng: -81.9275}
+  });
+
+  map.addListener('click', function(e) {
+    placeMarkerAndPanTo(e.latLng, map);
+  });
+  
+  
+  var listener1 = google.maps.event.addListener(marker, 'click', aFunction);
+
+google.maps.event.removeListener(listener1);
+  
+}
+
+function placeMarkerAndPanTo(latLng, map) {
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map
+  });
+  map.panTo(latLng);
+}
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9ubHpHdk5ilj2_ituyzGe_9MSJLojYfM&callback=initMap" async defer></script>
+  </body>
+</html>
